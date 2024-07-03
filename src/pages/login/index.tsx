@@ -22,7 +22,7 @@ const Login = () => {
       }
     };
     getUser();
-  }, []);
+  });
 
   const handleLogin = async (e: any) => {
     e.preventDefault();

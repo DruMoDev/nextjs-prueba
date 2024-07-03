@@ -22,9 +22,10 @@ const SignUp = () => {
       }
     };
     getUser();
-  }, []);
+  });
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e: any) => {
+    e.preventDefault();
     const { error } = await supabase.auth.signUp({
       email: email,
       password: password,
@@ -76,7 +77,7 @@ const SignUp = () => {
           <div className="flex items-center justify-between">
             <button
               className="bg-teal-500 hover:bg-teal-600 text-white font-bold text-2xl py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all"
-              type="button"
+              type="submit"
               onClick={handleSignUp}>
               Sign Up
             </button>

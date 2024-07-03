@@ -25,7 +25,7 @@ const Dashboard = () => {
       setUser(user);
     };
     fetchUser();
-  }, []);
+  });
 
   return (
     <main className="flex min-h-screen flex-col  container mx-auto pt-36">

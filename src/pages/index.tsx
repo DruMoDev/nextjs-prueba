@@ -1,10 +1,26 @@
+import { createClient } from "@/utils/supabase/component";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const supabase = createClient();
+  const router = useRouter();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user) {
+        router.push("/dashboard");
+      }
+    };
+    getUser();
+  });
   return (
     <main
       className={`flex min-h-screen flex-col items-center container mx-auto pt-36 ${inter.className}`}>
