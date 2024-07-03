@@ -7,7 +7,7 @@ export default function createClient(req: NextApiRequest, res: NextApiResponse) 
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
+        getAll(): any {
           return Object.keys(req.cookies).map((name) => ({ name, value: req.cookies[name] }))
         },
         setAll(cookiesToSet) {
